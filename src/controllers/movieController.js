@@ -12,7 +12,15 @@ router.post("/create", (req, res) => {
 
   movieService.create(newMovie);
 
-  res.send("create");
+  res.redirect("/");
+});
+
+router.get("/movies/:movieId", (req, res) => {
+  const movieId = req.params.movieId;
+  const movie = movieService.getOne(movieId);
+
+  // console.log(movie);
+  res.render("details", { movie });
 });
 
 module.exports = router;
