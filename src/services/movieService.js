@@ -8,7 +8,29 @@ const movies = [
     imageUrl: "/img/jungle-cruise.jpeg",
     rating: "4",
     description:
-      "reaming about saving countless lives and having another adventure, the feisty English feminist and doctor of botany, Dr Lily Houghton, embarks on a peril-laden mission to change the world.",
+      "Dreaming about saving countless lives and having another adventure, the feisty English feminist and doctor of botany, Dr Lily Houghton, embarks on a peril-laden mission to change the world.",
+  },
+  {
+    _id: 2,
+    title: "The Little Mermaid",
+    genre: "Fantasy",
+    director: "Spielberg",
+    year: "2017",
+    imageUrl: "/img/the-little-mermaid.jpg",
+    rating: "3",
+    description:
+      "The youngest of King Triton's daughters, Ariel is a beautiful and spirited young mermaid with a thirst for adventure.",
+  },
+  {
+    _id: 3,
+    title: "Home Alone",
+    genre: "Comedy",
+    director: "Robert",
+    year: "2004",
+    imageUrl: "/img/home-alone.jpeg",
+    rating: "5",
+    description:
+      "It is Christmas time and the McCallister family is preparing for a vacation in Paris, France. ",
   },
 ];
 
