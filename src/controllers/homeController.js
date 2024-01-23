@@ -13,9 +13,11 @@ router.get("/about", (req, res) => {
 });
 
 router.get("/search", (req, res) => {
-  const movies = movieService.getAll();
+  // console.log(req.query);
+  const { title, genre, year } = req.query;
+  const movieResult = movieService.search(title, genre, year);
 
-  res.render("search", { movies });
+  res.render("search", { movies: movieResult, title, genre, year });
 });
 
 router.get("*", (req, res) => {
