@@ -6,6 +6,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     lowercase: true,
+    unique: true, // unique е индекс, няма да позволи второ ентри със същата стойност
   },
   password: {
     type: String,
