@@ -36,6 +36,9 @@ exports.getOne = (movieId) => Movie.findById(movieId).populate("casts"); // movi
 
 exports.create = (movieData) => Movie.create(movieData);
 
+exports.edit = (movieId, movieData) =>
+  Movie.findByIdAndUpdate(movieId, movieData);
+
 exports.attach = async (movieId, castId) => {
   // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
   const movie = await this.getOne(movieId);
@@ -49,3 +52,5 @@ exports.attach = async (movieId, castId) => {
   // await cast.save();
   return movie.save();
 };
+
+exports.delete = (movieId) => Movie.findByIdAndDelete(movieId);
