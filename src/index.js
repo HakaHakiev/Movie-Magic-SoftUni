@@ -6,7 +6,7 @@ const configHandlebars = require("./config/configHandlebars");
 const configExpress = require("./config/configExpress");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 configHandlebars(app);
 configExpress(app);
