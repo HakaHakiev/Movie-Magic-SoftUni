@@ -31,14 +31,15 @@ router.get("/movies/:movieId", isAuth, async (req, res) => {
   const movieId = req.params.movieId;
   const movie = await movieService.getOne(movieId).lean();
   // const casts = await castService.getByIds(movie.casts).lean();
-  const isOwner = movie.owner == req.user._id;
+  const isOwner = movie.owner == req.user?._id;
+  const isAuthenticated = !!req.user;
 
   // TODO: This is not perfect, use handlebars helpers
   // movie.rating = new Array(Number(movie.rating)).fill(true);
   movie.ratingStars = "&#x2605".repeat(movie.rating);
 
   // console.log(movie);
-  res.render("movie/details", { movie, isOwner });
+  res.render("movie/details", { movie, isOwner, isAuthenticated });
 });
 
 router.get("/movies/:movieId/attach", async (req, res) => {
