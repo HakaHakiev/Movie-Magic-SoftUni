@@ -6,6 +6,7 @@ const { SECRET } = require("../config/config");
 // TODO: ck=heck if user exists
 exports.register = async (userData) => {
   const user = await User.findOne({ email: userData.email });
+
   if (user) {
     throw new Error("Email already exists");
   }
@@ -31,7 +32,7 @@ exports.login = async (email, password) => {
     email: user.email,
   };
   const token = await jwt.sign(payload, SECRET, { expiresIn: "2h" });
-  // return token
 
+  // return token
   return token;
 };

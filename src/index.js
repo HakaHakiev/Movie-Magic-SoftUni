@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const router = require("./routes");
 const configHandlebars = require("./config/configHandlebars");
 const configExpress = require("./config/configExpress");
+const routes = require("./routes");
 
 const app = express();
 const port = 3001;
@@ -11,7 +11,7 @@ const port = 3001;
 configHandlebars(app);
 configExpress(app);
 
-app.use(router);
+app.use(routes);
 
 mongoose
   .connect(`mongodb://localhost:27017/magic-movies`)

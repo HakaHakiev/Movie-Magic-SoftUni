@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
 
+const User = require("../models/User");
 const authService = require("../services/authService");
-const { getErrorMessage } = require("../utils/errorUtils");
+const { getErrorMessage, validate } = require("../utils/errorUtils");
 
 router.get("/register", (req, res) => {
   res.render("auth/register");
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", validate(User), async (req, res) => {
   const userData = req.body;
 
   try {
@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
   } catch (err) {
     const message = getErrorMessage(err);
 
-    res.render("/auth/register", { ...userData, error: message });
+    res.render("/auth/register", { error: message, ...userData });
   }
 });
 
@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/logout", async (req, res) => {
+router.get("/logout", (req, res) => {
   res.clearCookie("auth");
 
   res.redirect("/");

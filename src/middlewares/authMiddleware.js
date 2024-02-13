@@ -1,5 +1,5 @@
-const { SECRET } = require("../config/config");
 const jwt = require("../lib/jwt");
+const { SECRET } = require("../config/config");
 
 exports.auth = async (req, res, next) => {
   // get token
@@ -14,6 +14,7 @@ exports.auth = async (req, res, next) => {
 
     req.user = decodedToken;
     res.locals.isAuthenticated = true;
+    res.locals.user = decodedToken;
 
     next();
   } catch (error) {

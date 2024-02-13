@@ -13,9 +13,9 @@ exports.getErrorMessage = (err) => {
 
 // middleware factory
 exports.validate = (Model) => async (req, res, next) => {
-  const modelInstance = new Model(req.body);
-
   try {
+    const modelInstance = new Model(req.body);
+
     const isValid = await modelInstance.validate();
 
     if (!isValid) {
@@ -23,7 +23,7 @@ exports.validate = (Model) => async (req, res, next) => {
     }
 
     next();
-  } catch (error) {
+  } catch (err) {
     const message = this.getErrorMessage(err);
     res.render("404", { error: message });
   }
